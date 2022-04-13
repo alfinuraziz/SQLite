@@ -1,5 +1,6 @@
 package com.example.sqlite.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sqlite.R;
 import com.example.sqlite.database.Teman;
+import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,8 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
         nm = listData.get(position).getNama();
         tlp = listData.get(position).getTelpon();
 
+        holder.namaTxt.setTextColor(Color.BLUE);
+        holder.namaTxt.setTextSize(20);
         holder.namaTxt.setText(nm);
         holder.Telpontxt.setText(tlp);
     }
@@ -52,6 +56,13 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
             cardku = (CardView) view.findViewById(R.id.Kartuku);
                     namaTxt = (TextView) view.findViewById(R.id.textNama);
                     Telpontxt = (TextView) view.findViewById(R.id.textTelpon);
+            cardku.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    return true;
+                }
+            });
         }
     }
 }
